@@ -3,6 +3,7 @@ use std::path::{Path, PathBuf};
 use std::io;
 use std::time::SystemTime;
 use std::os::unix::fs::PermissionsExt;
+use std::env;
 
 pub struct LsOptions {
     pub show_hidden: bool,
@@ -187,4 +188,30 @@ pub fn run(dir_path: &str, options: &LsOptions) -> io::Result<()> {
     };
     
     processor.process(entries)
+}
+
+fn main() {
+    let args: Vec<String> = env::args().collect();
+    
+    let mut target_dir = String::from(".");
+    let mut options = LsOptions::default();
+    
+    for arg in args.iter().skip(1) {
+        if arg.starts_with('-') {
+            for flag in arg.chars().skip(1) {
+                match flag {
+                    'a' => options.show_hidden = true,
+                    'l' => options.long_format = true,
+                    _ => eprintln!("Unknown option: {}", flag),
+                }
+            }
+        } else {
+            target_dir = arg.clone();
+        }
+    }
+    
+    if let Err(e) = run(&target_dir, &options) {
+        eprintln!("Error: {}", e);
+        std::process::exit(1);
+    }
 }
