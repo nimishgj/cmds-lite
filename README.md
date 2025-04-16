@@ -3,6 +3,7 @@
 A repository containing simple Linux commands replicated in Rust to learn how they function under the hood. This project currently includes:
 
 - `cmd-ls`: A simplified implementation of the Unix `ls` command
+- `cmd-cat`: A simplified implementation of the Unix `cat` command
 
 ## Prerequisites
 
@@ -55,6 +56,35 @@ cmd-ls -la /path/to/directory
 
 - `-a`: Show all files, including hidden ones (those starting with '.')
 - `-l`: Use long listing format with permissions, size, and timestamps
+
+### cmd-cat
+
+A simplified implementation of the Unix `cat` command that concatenates and displays file contents.
+
+#### Usage
+
+```bash
+# Display the contents of a file
+cmd-cat filename.txt
+
+# Display the contents of multiple files
+cmd-cat file1.txt file2.txt
+
+# Display contents with line numbers
+cmd-cat -n filename.txt
+
+# Read from standard input if no file is specified
+echo "Hello, world!" | cmd-cat
+```
+
+#### Options
+
+- `-n`: Number all output lines
+- `-b`: Number non-blank output lines
+- `-E`: Display $ at end of each line
+- `-T`: Display TAB characters as ^I
+- `-A`: Equivalent to -ET (show all special characters)
+- `-s`: Squeeze multiple adjacent blank lines into one
 
 ## Development
 
