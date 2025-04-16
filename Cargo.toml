@@ -8,3 +8,7 @@ edition = "2021"
 [[bin]]
 name = "cmd-ls"
 path = "src/ls.rs"
+
+[[bin]]
+name = "cmd-cat"
+path = "src/cat.rs"
