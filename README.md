@@ -14,7 +14,7 @@ A repository containing simple Linux commands replicated in Rust to learn how th
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/cmds-lite.git
+git clone https://github.com/nimishgj/cmds-lite.git
 cd cmds-lite
 ```
 
